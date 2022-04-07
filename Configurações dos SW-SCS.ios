@@ -1,0 +1,639 @@
+!Switch Lab 1
+!Configuração de nome e mensagem do banner
+enable
+configure terminal
+hostname SW-LAB1
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS DO LABORATORIO 1!"
+M.O.T.D - Message Of The Day
+exit
+
+!Criar uma VLAN
+enable
+configure terminal
+vlan 10
+name LAB-1
+vlan 20
+name LAB-2
+vlan 30
+name LAB-3
+vlan 40
+name LAB-4
+vlan 50
+name GERENCIAMENTO
+end
+wr
+
+!Configurar IP no Switch
+enable
+configure terminal
+interface vlan 10
+ip address 192.168.1.10 255.255.255.0
+end
+wr
+
+!Colocar uma Interface em uma VLAN (Access)
+enable
+configure terminal
+interface range f0/1-4
+switchport mode access
+switchport access vlan 10
+exit 
+wr
+
+!Verificar as VLAN criadas no equipamento
+enable
+show vlan brief
+
+!Configurar uma Interface para o Modo Trunk
+enable
+configure terminal
+interface f0/5
+switchport mode trunk
+
+!Configurar VLAN Nativa na Interface Trunk
+enable
+configure terminal
+interface f0/5
+switchport trunk native vlan 99
+
+!Liberar as VLANs na Interface Trunk
+enable
+configure terminal
+interface f0/5
+switchport trunk allowed vlan 10,20,30,40,50,99
+
+
+!Senha da enable
+enable 
+configure terminal
+line console 0
+password INFO-152
+login
+enable secret Senha SCS-152
+
+!Definir o nome do domínio
+enable
+configure terminal
+ip domain-name infoscs152.local
+exit
+wr
+
+!Gerar a chave de criptografia
+enable
+configure terminal
+crypto key generate rsa general-keys modulus 1024
+exit
+wr
+
+!Criar usuário no dispositivo
+enable
+configure terminal
+username lab1 privilege 15 LAB1
+exit
+wr
+
+!Ativar o SSH nas linhas de VTY
+enable
+configure terminal
+line vty 0 15
+transport input ssh
+login local
+exit
+wr
+
+!Configurar as VTY para usar TELNET
+enable
+configure terminal
+line vty 0 15
+password SCS-152
+login
+
+!Ativar Login Local na Console
+enable
+configure terminal
+line console 0
+login local
+exit
+wr
+
+!Switch Lab 2
+!Configuração de nome e mensagem do banner
+enable
+configure terminal
+hostname SW-LAB2
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS DO LABORATORIO 2!"
+exit
+
+!Criar uma VLAN
+enable
+configure terminal
+vlan 10
+name LAB-1
+vlan 20
+name LAB-2
+vlan 30
+name LAB-3
+vlan 40
+name LAB-4
+vlan 50
+name GERENCIAMENTO
+end
+wr
+
+!Configurar IP no Switch
+enable
+configure terminal
+interface vlan 20
+ip address 192.168.2.20 255.255.255.0
+end
+wr
+
+!Colocar uma Interface em uma VLAN (Access)
+enable
+configure terminal
+interface range f0/1-4
+switchport mode access
+switchport access vlan 20
+end 
+wr
+
+!Verificar as VLAN criadas no equipamento
+enable
+show vlan brief
+
+!Configurar uma Interface para o Modo Trunk
+enable
+configure terminal
+interface f0/5
+switchport mode trunk
+
+!Configurar VLAN Nativa na Interface Trunk
+enable
+configure terminal
+interface f0/5
+switchport trunk native vlan 99
+
+!Liberar as VLANs na Interface Trunk
+enable
+configure terminal
+interface f0/5
+switchport trunk allowed vlan 10,20,30,40,50,99
+
+!Senha da enable
+enable 
+configure terminal
+line console 0
+password INFO-152
+login
+enable secret Senha SCS-152
+
+!Definir o nome do domínio
+enable
+configure terminal
+ip domain-name infoscs152.local
+exit
+wr
+
+!Gerar a chave de criptografia
+enable
+configure terminal
+crypto key generate rsa general-keys modulus 1024
+exit
+wr
+
+!Criar usuário no dispositivo
+enable
+configure terminal
+username lab2 privilege 15 LAB2
+exit
+wr
+
+!Ativar o SSH nas linhas de VTY
+enable
+configure terminal
+line vty 0 15
+transport input ssh
+login local
+exit
+wr
+
+!Configurar as VTY para usar TELNET
+enable
+configure terminal
+line vty 0 15
+password SCS-152
+login
+
+!Ativar Login Local na Console
+enable
+configure terminal
+line console 0
+login local
+exit
+wr
+
+!Switch Lab 3
+!Configuração de nome e mensagem do banner
+enable
+configure terminal
+hostname SW-LAB3
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS DO LABORATORIO 3!"
+end
+wr
+
+!Criar uma VLAN
+enable
+configure terminal
+vlan 10
+name LAB-1
+vlan 20
+name LAB-2
+vlan 30
+name LAB-3
+vlan 40
+name LAB-4
+vlan 50
+name GERENCIAMENTO
+end
+wr
+
+!Configurar IP no Switch
+enable
+configure terminal
+interface vlan 30
+ip address 192.168.3.30 255.255.255.0
+end
+wr
+
+!Colocar uma Interface em uma VLAN (Access)
+enable
+configure terminal
+interface range f0/1-4
+switchport mode access
+switchport access vlan 30
+end 
+wr
+
+!Verificar as VLAN criadas no equipamento
+enable
+show vlan brief
+
+!Configurar uma Interface para o Modo Trunk
+enable
+configure terminal
+interface f0/5
+switchport mode trunk
+
+!Configurar VLAN Nativa na Interface Trunk
+enable
+configure terminal
+interface f0/5
+switchport trunk native vlan 99
+
+!Liberar as VLANs na Interface Trunk
+enable
+configure terminal
+interface f0/5
+switchport trunk allowed vlan 10,20,30,40,50,99
+
+!Senha da enable
+enable 
+configure terminal
+line console 0
+password INFO-152
+login
+enable secret Senha SCS-152
+
+!Definir o nome do domínio
+enable
+configure terminal
+ip domain-name infoscs152.local
+exit
+wr
+
+!Gerar a chave de criptografia
+enable
+configure terminal
+crypto key generate rsa general-keys modulus 1024
+exit
+wr
+
+!Criar usuário no dispositivo
+enable
+configure terminal
+username lab3 privilege 15 LAB3
+exit
+wr
+
+!Ativar o SSH nas linhas de VTY
+enable
+configure terminal
+line vty 0 15
+transport input ssh
+login local
+exit
+wr
+
+!Configurar as VTY para usar TELNET
+enable
+configure terminal
+line vty 0 15
+password SCS-152
+login
+
+!Ativar Login Local na Console
+enable
+configure terminal
+line console 0
+login local
+exit
+wr
+
+!Switch Lab 4
+!Configuração de nome e mensagem do banner
+enable
+configure terminal
+hostname SW-LAB4
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS DO LABORATORIO 4!"
+end
+wr
+
+!Criar uma VLAN
+enable
+configure terminal
+vlan 10
+name LAB-1
+vlan 20
+name LAB-2
+vlan 30
+name LAB-3
+vlan 40
+name LAB-4
+vlan 50
+name GERENCIAMENTO
+end
+wr
+
+!Configurar IP no Switch
+enable
+configure terminal
+interface vlan 40
+ip address 192.168.4.40 255.255.255.0
+end
+wr
+
+!Colocar uma Interface em uma VLAN (Access)
+enable
+configure terminal
+interface range f0/1-4
+switchport mode access
+switchport access vlan 40
+end 
+wr
+
+!Verificar as VLAN criadas no equipamento
+enable
+show vlan brief
+
+!Configurar uma Interface para o Modo Trunk
+enable
+configure terminal
+interface f0/5
+switchport mode trunk
+
+!Configurar VLAN Nativa na Interface Trunk
+enable
+configure terminal
+interface f0/5
+switchport trunk native vlan 99
+
+!Liberar as VLANs na Interface Trunk
+enable
+configure terminal
+interface f0/5
+switchport trunk allowed vlan 10,20,30,40,50,99
+
+!Senha da enable
+enable 
+configure terminal
+line console 0
+password INFO-152
+login
+enable secret Senha SCS-152
+
+!Definir o nome do domínio
+enable
+configure terminal
+ip domain-name infoscs152.local
+exit
+wr
+
+!Gerar a chave de criptografia
+enable
+configure terminal
+crypto key generate rsa general-keys modulus 1024
+exit
+wr
+
+!Criar usuário no dispositivo
+enable
+configure terminal
+username lab4 privilege 15 LAB4
+exit
+wr
+
+!Ativar o SSH nas linhas de VTY
+enable
+configure terminal
+line vty 0 15
+transport input ssh
+login local
+exit
+wr
+
+!Configurar as VTY para usar TELNET
+enable
+configure terminal
+line vty 0 15
+password SCS-152
+login
+
+!Ativar Login Local na Console
+enable
+configure terminal
+line console 0
+login local
+exit
+wr
+
+!Switch de Gerenciamento
+!Configuração de nome e mensagem do banner
+enable
+configure terminal
+hostname SW-GER
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS DA SALA DE GERENCIAMENTO!"
+end
+wr
+
+!Criar uma VLAN
+enable
+configure terminal
+vlan 10
+name LAB-1
+vlan 20
+name LAB-2
+vlan 30
+name LAB-3
+vlan 40
+name LAB-4
+vlan 50
+name GERENCIAMENTO
+end
+wr
+
+!Configurar IP no Switch
+enable
+configure terminal
+interface vlan 50
+ip address 192.168.5.50 255.255.255.0
+end
+wr
+
+!Colocar uma Interface em uma VLAN (Access)
+enable
+configure terminal
+interface range f0/1-4
+switchport mode access
+switchport access vlan 50
+end 
+wr
+
+!Atrelar as VLANs às Interfaces
+enable
+configure terminal
+interface f0/1
+switchport mode access
+switchport access vlan 10
+interface f0/2
+switchport mode access
+switchport access vlan 20
+interface f0/3
+switchport mode access
+switchport access vlan 30
+interface f0/4
+switchport mode access
+switchport access vlan 40
+
+!Verificar as VLAN criadas no equipamento
+enable
+show vlan brief
+
+!Configurar uma Interface para o Modo Trunk
+enable
+configure terminal
+interface range f0/1-4
+switchport mode trunk
+end
+wr
+
+!Configurar VLAN Nativa na Interface Trunk
+enable
+configure terminal
+interface range f0/1-4
+switchport trunk native vlan 99
+end
+wr
+
+!Liberar as VLANs na Interface Trunk
+enable
+configure terminal
+interface range f0/1-4
+switchport trunk allowed vlan 10,20,30,40,50,99
+end 
+wr
+
+
+!Senha da enable
+enable 
+configure terminal
+line console 0
+password INFO-152
+login
+enable secret Senha SCS-152
+
+!Definir o nome do domínio
+enable
+configure terminal
+ip domain-name infoscs152.local
+exit
+wr
+
+!Gerar a chave de criptografia
+enable
+configure terminal
+crypto key generate rsa general-keys modulus 1024
+exit
+wr
+
+!Criar usuário no dispositivo
+enable
+configure terminal
+username ger privilege 15 GERE
+exit
+wr
+
+!Ativar o SSH nas linhas de VTY
+enable
+configure terminal
+line vty 0 15
+transport input ssh
+login local
+exit
+wr
+
+!Configurar as VTY para usar TELNET
+enable
+configure terminal
+line vty 0 15
+password SCS-152
+login
+
+!Ativar Login Local na Console
+enable
+configure terminal
+line console 0
+login local
+exit
+wr
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
